@@ -11,7 +11,7 @@ use tracing::log::LevelFilter;
 use tracing_actix_web::TracingLogger;
 
 use crate::configuration::{DatabaseSettings, Settings};
-use crate::handlers::{analysis_http, analysis_https, health_check};
+use crate::handlers::health_check;
 
 /// Represents the server application.
 pub struct Application {
@@ -77,8 +77,6 @@ fn run(listener: TcpListener, db_pool: PgPool) -> Result<Server, std::io::Error>
             .wrap(cors)
             .wrap(TracingLogger::default())
             .route("/health_check", web::get().to(health_check))
-            .route("/http/{}", web::get().to(analysis_http))
-            .route("/https/{}", web::get().to(analysis_https))
             .app_data(db_pool.clone())
     })
     .listen(listener)?

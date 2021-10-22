@@ -1,8 +1,8 @@
 //! Contains HTTP Handlers that directly receive and respond to requests to the server.
-mod analysis;
+// mod analysis;
 mod health_check;
 use actix_web::{http::StatusCode, HttpResponse, ResponseError};
-pub use analysis::*;
+// pub use analysis::*;
 pub use health_check::*;
 
 pub type ApplicationResponse = Result<HttpResponse, ApplicationError>;
