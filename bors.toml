@@ -1,0 +1,3 @@
+status = [
+  "Test", "Rustfmt", "Sqlx-data check", "Clippy" 
+]
